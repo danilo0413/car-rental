@@ -19,7 +19,7 @@ export default function CardCar(props: CardCarProps) {
       await axios.delete(`/api/car/${car.id}`);
       toast({ title: "Car deleted!" });
       router.refresh();
-    } catch (error) {
+    } catch {
       toast({
         title: "Something went wrong",
         variant: "destructive",
@@ -40,7 +40,7 @@ export default function CardCar(props: CardCarProps) {
         });
       }
       router.refresh();
-    } catch (error) {
+    } catch {
       toast({
         title: "Something went wrong",
         variant: "destructive",

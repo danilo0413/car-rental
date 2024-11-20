@@ -3,17 +3,13 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
-  req: Request,
-  {
-    params,
-  }: {
-    params: { carId: string };
-  }
+  req: Request, 
+  { params }: { params: Promise<{ carId: string }> }
 ) {
   try {
     const { userId } = await auth();
     const { carId } = await params;
-    const { isPublish } = await req.json();
+    const { isPublish } =  await req.json();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -41,12 +37,12 @@ export async function DELETE(
   {
     params,
   }: {
-    params: { carId: string };
+    params: Promise<{ carId: string }>;
   }
 ) {
   try {
     const { userId } = await auth();
-    const { carId } = params;
+    const { carId } = await params;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });

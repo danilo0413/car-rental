@@ -56,7 +56,7 @@ export default function FormEditCar(props: FormEditCarProps) {
         await axios.patch(`/api/car/${carData.id}/form`, values)
         toast({ title: 'Car Edit Successful'})
         router.refresh()
-    } catch (error) {
+    } catch {
         toast({
             title: 'Something went wrong',
             variant: 'destructive',

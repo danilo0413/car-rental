@@ -14,15 +14,16 @@ const corsHeaders = {
 export async function POST(
   req: Request,
   {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     params,
   }: {
-    params: {
+    params: Promise<{
       carId: string;
       priceDay: string;
       startDate: Date;
       endDate: Date;
       carName: string;
-    };
+    }>;
   }
 ) {
   try {
